@@ -3,11 +3,14 @@ import socketIOClient from "socket.io-client";
 import './style/App.css';
 import WebSocketProvider from './WebSocket';
 import { Provider } from 'react-redux'
-import Store from './store/store';
-
+import Store from './store/store'; 
+import { connect } from 'react-redux';
 import Game from "./components/Game";
+import ConnectedApp from "./components/ConnectedApp";
+import WaitingRoom from "./components/WaitingRoom";
+import GetUserDetails from "./components/GetUserDetails";
 
-class App extends React.Component {
+export default class App extends React.Component {
   state = {
     socket: null
   }
@@ -24,34 +27,35 @@ class App extends React.Component {
     return !this.state.socket ? 'loading' : (
       <Provider store={Store} >
         <WebSocketProvider>
-          <div className="App">
+          <ConnectedApp/>
+          {/* <div className="App">
             {/* if no name entered < GetUserDetails >
               else  if no game in action < WaitingRoom >
                     else- < Board > */}
-            {
+            {/* {
               !this.props.name ? < GetUserDetails />
                 : !this.props.isPlaying ? < WaitingRoom />
                   : < Game />
             }
-          </div>
+          </div> */} 
         </WebSocketProvider>
       </Provider>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  var { score, name, isPlaying } = state.game
-  return {
-    score,
-    name,
-    isPlaying
-  }
-}
-const mapDispatchToProps = {
-}
+// const mapStateToProps = (state) => {
+//   var { score, name, isPlaying } = state.game
+//   return {
+//     score,
+//     name,
+//     isPlaying
+//   }
+// }
+// const mapDispatchToProps = {
+// }
 
-App.contextType = WebSocketContext;//not sure if needed
+// // App.contextType = WebSocketContext;//not sure if needed
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
-// export default App;
+// export default connect(mapStateToProps, mapDispatchToProps)(App)
+// // export default App;
