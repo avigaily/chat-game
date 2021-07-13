@@ -1,0 +1,7 @@
+export const SET_NAME = 'SET_NAME'
+export const SET_SCORE = 'SET_SCORE'
+export const SET_ID = 'SET_ID'
+export const SET_IS_PLAYING = 'SET_IS_PLAYING'
+export const SET_PLAYERS = 'SET_PLAYERS'
+// export const UPDATE_PLAYERS = 'UPDATE_PLAYERS'
+export const ADD_PLAYER = 'ADD_PLAYER'
